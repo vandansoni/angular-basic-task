@@ -1,0 +1,53 @@
+<html >
+<head>
+    <title>My First Angular Demo</title>
+    <script src="./lib/angular.min.js"></script>
+
+    <script>
+        var app = angular.module('MyApp', []);
+        app.controller('MyCtrl', function($scope){
+            $scope.users = ['Milan', 'Trellis', 'ABC'];   
+            $scope.userName = "";
+            $scope.imagePath = "https://www.google.co.in/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+
+            $scope.addUser = function(){
+                console.log("Adding user...");
+                $scope.users.push($scope.userName);
+                $scope.userName = "";
+                console.log($scope.users);
+            }
+
+            $scope.deleteUser = function(user){
+                console.log("Deleting user...");
+                console.log(user);
+                var index = $scope.users.indexOf(user);
+                console.log("Index : ", index);
+                $scope.users.splice(index, 1);
+            }
+        });
+
+    </script>
+</head>
+<body ng-app="MyApp" ng-controller="MyCtrl">
+    
+    
+    <img ng-src="{{imagePath}}"/>
+    <h2>List Of Users</h2>
+    <br/>
+    <input type="text" ng-model="userName" ng-disabled="true"/>
+    
+    <div style=" color: red;" ng-if="!userName">
+        Please enter username!
+    </div>
+    
+    <button ng-click="addUser()">Add</button>
+    
+    <ul >
+        <li ng-repeat="user in users" ng-cloak>
+            {{$index+1}}.{{user}}
+            <button ng-click="deleteUser(user)">Delete</button>
+        </li>
+    </ul>
+
+</body>
+</html>

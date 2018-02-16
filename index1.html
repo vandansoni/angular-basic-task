@@ -1,0 +1,30 @@
+<html ng-app="">
+<head>
+    <title>My First Angular Demo</title>
+    <script src="./lib/angular.min.js"></script>
+</head>
+<body>
+    Hello this is my angular application. 
+    <br/>
+    Type something.
+    <br/>
+    <input type="text" ng-model="text"/>
+    {{text | uppercase}} <br/>
+    <input type="text" ng-model="textLower"/>
+    {{textLower | lowercase}} <br/>
+    <input type="number" ng-model="textCurrency"/>
+    {{textCurrency | currency:'#'}} <br/>
+
+    <input type="text" ng-model="textLong"/>
+    {{textLong | limitTo:10}} <br/>
+
+
+    <input type="number" ng-model="textNum"/>
+    {{textNum |number: 2}} <br/>
+
+
+
+
+
+</body>
+</html>
